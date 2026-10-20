@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L J Fotografias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.2) 0%, transparent 70%),
+                radial-gradient(circle at 50% 100%, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 16px;
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+        }
+
+        /* --- Content Card com Borda Dourada Metálica --- */
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: #0d0d0d;
+            border-radius: 24px;
+            padding: 36px 22px;
+            text-align: center;
+            position: relative;
+            border: 2px solid transparent;
+            background-image: linear-gradient(#0d0d0d, #0d0d0d), 
+                              linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.25), 0 20px 40px rgba(0, 0, 0, 0.9);
+        }
+
+        /* --- Foto de Capa / Perfil --- */
+        .profile-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px auto;
+        }
+
+        .profile-border {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0a0a0a;
+            display: block;
+        }
+
+        /* --- Textos e Títulos --- */
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fcf6ba;
+            margin-bottom: 6px;
+        }
+
+        .tagline {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #cccccc;
+            line-height: 1.5;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        /* --- Seção de Links --- */
+        .links-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 22px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Botão WhatsApp */
+        .link-card.whatsapp {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #b38728 100%);
+            color: #000000 !important;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            border: none;
+        }
+
+        .link-card.whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+            filter: brightness(1.08);
+        }
+
+        .link-card.whatsapp i {
+            color: #000000;
+        }
+
+        /* Botão Instagram */
+        .link-card.instagram {
+            background: #141414;
+            color: #ffffff !important;
+            border: 2px solid transparent;
+            background-image: linear-gradient(#141414, #141414), 
+                              linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .link-card.instagram:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .link-content i {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .instagram-icon {
+            color: #d4af37;
+        }
+
+        .arrow-icon {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        /* --- Galeria --- */
+        .gallery-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+        }
+
+        .gallery-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fcf6ba;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            background-image: linear-gradient(#000, #000), 
+                              linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .gallery-overlay i {
+            color: #fcf6ba;
+            font-size: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* --- Modal Lightbox (Foto Ampliada) --- */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.93);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-wrapper {
+            position: relative;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 12px;
+            padding: 3px;
+            background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .lightbox-content {
+            display: block;
+            max-width: 100%;
+            max-height: calc(80vh - 6px);
+            border-radius: 10px;
+            object-fit: contain;
+            background: #0a0a0a;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fcf6ba;
+            font-size: 32px;
+            cursor: pointer;
+        }
+
+        footer {
+            font-size: 11px;
+            color: #777777;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Foto de Capa / Perfil -->
+        <div class="profile-container">
+            <div class="profile-border">
+                <img src="https://i.postimg.cc/cHS1JtdR/6f7301c3-fa2b-4cb0-964c-f1fa02b4c7bf.jpg" alt="L J Fotografias - Capa" class="profile-img">
+            </div>
+        </div>
+        
+        <!-- Nome e Subtítulo -->
+        <h1>L J Fotografias</h1>
+        <p class="tagline">Fotografia Profissional</p>
+        <p class="subtitle">Eternizando momentos com elegância e exclusividade.<br>Entre em contato para agendamentos:</p>
+
+        <!-- Botões de Links -->
+        <div class="links-section">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/5577981128966" class="link-card whatsapp" target="_blank" rel="noopener noreferrer">
+                <div class="link-content">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Solicitar Orçamento no WhatsApp</span>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/ljfotografias_" class="link-card instagram" target="_blank" rel="noopener noreferrer">
+                <div class="link-content">
+                    <i class="fa-brands fa-instagram instagram-icon"></i>
+                    <span>Acompanhe no Instagram</span>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow-icon"></i>
+            </a>
+        </div>
+
+        <!-- Seção da Galeria / Portfólio -->
+        <div class="gallery-header">
+            <div class="gallery-line"></div>
+            <span class="gallery-title">Conheça Meu Trabalho</span>
+            <div class="gallery-line"></div>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/5tPbqKJB/5aa6d5af-32df-4360-abaf-a177d46373d7.jpg')">
+                <img src="https://i.postimg.cc/5tPbqKJB/5aa6d5af-32df-4360-abaf-a177d46373d7.jpg" alt="Trabalho 1">
+                <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/sDFycZk9/604df8a5-ac84-4c88-9ae3-ec5547e4286e.jpg')">
+                <img src="https://i.postimg.cc/sDFycZk9/604df8a5-ac84-4c88-9ae3-ec5547e4286e.jpg" alt="Trabalho 2">
+                <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/d0ScT7Rp/c739d68a-b4b0-4b42-8337-15b8fd3def45.jpg')">
+                <img src="https://i.postimg.cc/d0ScT7Rp/c739d68a-b4b0-4b42-8337-15b8fd3def45.jpg" alt="Trabalho 3">
+                <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/fRB663rp/b1cc2c52-f389-40b7-a234-552a88e917db.jpg')">
+                <img src="https://i.postimg.cc/fRB663rp/b1cc2c52-f389-40b7-a234-552a88e917db.jpg" alt="Trabalho 4">
+                <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/NF6nbLX7/c2d9dfde-a8ef-4b0a-8b56-5e22677bca90.jpg')">
+                <img src="https://i.postimg.cc/NF6nbLX7/c2d9dfde-a8ef-4b0a-8b56-5e22677bca90.jpg" alt="Trabalho 5">
+                <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/FKwn40g2/bf93d240-3e52-4bdd-bc31-9ef647dd933a.jpg')">
+                <img src="https://i.postimg.cc/FKwn40g2/bf93d240-3e52-4bdd-bc31-9ef647dd933a.jpg" alt="Trabalho 6">
+                <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/Y2z8X5ZH/31e535fc-733a-4c65-a318-b4d5f2cf392f.jpg')">
+                <img src="https://i.postimg.cc/Y2z8X5ZH/31e535fc-733a-4c65-a318-b4d5f2cf392f.jpg" alt="Trabalho 7">
+                <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('https://i.postimg.cc/cCFRsSGR/ce39f8b8-d46e-444d-bad9-69a131504da1.jpg')">
+                <img src="https://i.postimg.cc/cCFRsSGR/ce39f8b8-d46e-444d-bad9-69a131504da1.jpg" alt="Trabalho 8">
+                <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+            </div>
+        </div>
+
+        <footer>
+            L J Fotografias • Todos os direitos reservados
+        </footer>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-wrapper" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img class="lightbox-content" id="lightboxImg" src="" alt="Ampliada">
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+        }
+    </script>
+
+</body>
+</html>
